@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 final class Employee
 {
 
@@ -14,6 +16,12 @@ final class Employee
     private $birthDate;
     private $domicile;
     private $skills;
+
+    public function __construct()
+    {
+        $this->skills = new ArrayCollection();
+    }
+
 
     public function id()
     {
@@ -79,10 +87,5 @@ final class Employee
     {
         $this->skills = $skills;
     }
-//nombre, email, puesto, fecha de nacimiento (formato dd/mm/yyyy), domicilio, y al menos un skill
-
-
-
-
 
 }

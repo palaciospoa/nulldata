@@ -35,7 +35,7 @@
                     <td>{{ employee.job }}</td>
                     <td>{{ employee.birthDate | date("m/d/Y")  }}</td>
                     <td>{{ employee.domicile }}</td>
-                    {#<td>{{ employee.skills }}</td>#}
+                    <td>{{ employee.skills[0]['skillName'] }} - {{ employee.skills[0]['skillLevel'] }}</td>
                     <td></td>
                 </tr>
                 {% endfor %}

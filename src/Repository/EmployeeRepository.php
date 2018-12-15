@@ -21,7 +21,7 @@ final class EmployeeRepository
         $this->entityManager = $entityManager;
     }
 
-    public function find(int $employeeId):Employee{
+    public function find(int $employeeId): ?Employee{
         $employee = $this->repository->find($employeeId);
         return $employee;
     }

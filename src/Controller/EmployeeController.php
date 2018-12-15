@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace App\Controller;
 
 use App\Entity\Employee;
+use App\Entity\EmployeeSkills;
 use App\Form\EmployeeType;
 use App\Repository\EmployeeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,13 +22,19 @@ final class EmployeeController extends AbstractController
     }
 
     public function createEmployee(Request $request):Response{
-
         $employee = new Employee();
+        $employeeSkill = new EmployeeSkills();
+        $employee->skills()->add($employeeSkill);
 
         $form = $this->createForm(EmployeeType::class, $employee);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $skills = $employee->skills()[0];
+            $skillArray=[];
+            $skillArray[0]['skillName']=$skills->getSkillName();
+            $skillArray[0]['skillLevel']=$skills->getSkillLevel();
+            $employee->setSkills($skillArray);
             $this->employeeRepository->save($employee);
             return $this->redirectToRoute('employeeList');
         }
@@ -48,7 +55,6 @@ final class EmployeeController extends AbstractController
     public function employeeShow(int $id){
         $employee = $this->employeeRepository->find($id);
 
-        dd($employee);
         return $this->render('employee-show.html.twig',[
             'employee'=>$employee
         ]);

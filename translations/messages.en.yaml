@@ -4,5 +4,7 @@ form.employee.birthDate: Birth Date
 form.employee.job: Job
 form.employee.domicile: Domicile
 form.employee.skills: Skills
+form.skill.name: Skill name
+form.skill.level: Skill level
 message.send: Send
 message.return: Return

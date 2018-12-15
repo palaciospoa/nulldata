@@ -6,10 +6,12 @@ namespace App\Form;
 
 use App\Entity\Employee;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Valid;
 
 final class EmployeeType extends AbstractType
 {
@@ -21,7 +23,15 @@ final class EmployeeType extends AbstractType
             ->add('job',TextType::class,['label'=>'form.employee.job'])
             ->add('birthDate',DateType::class,['label'=>'form.employee.birthDate'])
             ->add('domicile',TextType::class,['label'=>'form.employee.domicile'])
-//            ->add('skills',TextType::class,['label'=>'form.employee.skills'])
+            ->add('skills',CollectionType::class,[
+                'entry_type' => SkillType::class,
+                'allow_add'=> true,
+                'entry_options' => [
+                   'attr' => ['label' => 'false'],
+                   ],
+                'constraints' => [new Valid()]
+            ]
+            )
         ;
     }
 
@@ -30,6 +40,7 @@ final class EmployeeType extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => Employee::class,
+                'cascade_validation' => true,
             ]
         );
     }
