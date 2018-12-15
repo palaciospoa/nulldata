@@ -1,9 +1,18 @@
 App\Entity\Employee:
+  constraints:
+  - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+      fields: email
   properties:
     name:
     - NotBlank: ~
     - Length:
         min: 2
+        max: 50
+    email:
+    - NotBlank: ~
+    - Email: ~
+    - Length:
+        min: 8
         max: 50
     job:
       - NotBlank: ~
@@ -12,5 +21,5 @@ App\Entity\Employee:
       - Date: ~
     domicile:
       - NotBlank: ~
-    skills:
-      - NotBlank: ~
+#    skills:
+#      - NotBlank: ~

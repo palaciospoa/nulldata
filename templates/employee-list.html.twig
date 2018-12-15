@@ -4,12 +4,53 @@
 {% endblock %}
 {% block stylesheets %}
     {#TODO: webpack#}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 {% endblock %}
 
 {% block body %}
+    {% if employeeRepository | length == 0 %}
+        <h2>No employees</h2>
+    {% else %}
+        <h2>Employees</h2>
+        <div class="table-responsive">
+            <table width="100%" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Job</th>
+                    <th>BirthDate</th>
+                    <th>Domicile</th>
+                    <th>Skills</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for employee in employeeRepository %}
+                <tr>
+                    <td><a href="{{ path('employeeShow',{'id':employee.id}) }}" class="btn btn-primary">{{ employee.id }}</a></td>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.job }}</td>
+                    <td>{{ employee.birthDate | date("m/d/Y")  }}</td>
+                    <td>{{ employee.domicile }}</td>
+                    {#<td>{{ employee.skills }}</td>#}
+                    <td></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 
 
+    <hr class="my-4"/>
+    <div class="navigation">
+        {{ knp_pagination_render(employeeRepository) }}
+    </div>
+
+    <a href="{{ path('createEmployeeForm') }}" class="btn btn-primary">New employee</a>
 {% endblock %}
 
 

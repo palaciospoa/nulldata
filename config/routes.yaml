@@ -1,11 +1,19 @@
 createEmployeeForm:
-  path: /
+  path: /employee/create
   controller: App\Controller\EmployeeController::createEmployee
 
-employeLIst:
-  path: /
+employeeList:
+  path: /{page}
   controller: App\Controller\EmployeeController::employeeList
+  defaults:
+    page: 1
+  requirements:
+    page: '\d+'
 
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+employeeShow:
+  path: /employee/{id}
+  controller: App\Controller\EmployeeController::employeeShow
+  defaults:
+    page: 1
+  requirements:
+    id: '\d+'

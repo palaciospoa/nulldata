@@ -17,6 +17,7 @@ final class EmployeeType extends AbstractType
     {
         $builder
             ->add('name',TextType::class,['label'=>'form.employee.name'])
+            ->add('email',TextType::class,['label'=>'form.employee.email'])
             ->add('job',TextType::class,['label'=>'form.employee.job'])
             ->add('birthDate',DateType::class,['label'=>'form.employee.birthDate'])
             ->add('domicile',TextType::class,['label'=>'form.employee.domicile'])

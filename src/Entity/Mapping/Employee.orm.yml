@@ -9,6 +9,8 @@ App\Entity\Employee:
   fields:
     name:
       type: string
+    email:
+      type: string
     job:
       type: string
     birthDate:
