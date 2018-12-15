@@ -1,3 +1,11 @@
+createEmployeeForm:
+  path: /
+  controller: App\Controller\EmployeeController::createEmployee
+
+employeLIst:
+  path: /
+  controller: App\Controller\EmployeeController::employeeList
+
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index

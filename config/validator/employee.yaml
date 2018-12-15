@@ -1,0 +1,16 @@
+App\Entity\Employee:
+  properties:
+    name:
+    - NotBlank: ~
+    - Length:
+        min: 2
+        max: 50
+    job:
+      - NotBlank: ~
+    birthDate:
+      - NotBlank: ~
+      - Date: ~
+    domicile:
+      - NotBlank: ~
+    skills:
+      - NotBlank: ~

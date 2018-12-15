@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Employee Form
+{% endblock %}
+{% block stylesheets %}
+    {#TODO: webpack#}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+    <h1>Employee Form</h1>
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-primary">{{ 'message.send'|trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+

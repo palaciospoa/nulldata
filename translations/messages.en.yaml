@@ -1,0 +1,6 @@
+form.employee.name: Name
+form.employee.birthDate: Birth Date
+form.employee.job: Job
+form.employee.domicile: Domicile
+form.employee.skills: Skills
+message.send: Send
